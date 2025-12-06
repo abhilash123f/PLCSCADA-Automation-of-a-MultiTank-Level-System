@@ -1,0 +1,16 @@
+HMI SCREEN DESCRIPTIONS (WinCC)
+================================
+
+SCREEN 1: Main Overview
+- Two tank graphics showing current levels (0-100%) with color fill
+- Pump1 and Pump2 status indicators (green=running, gray=stopped)
+- Mode selector switch (Manual/Auto)
+- Emergency stop button (red, large)
+- Navigation button to Alarms screen
+
+SCREEN 2: Alarms
+- Alarm list showing active alarms with timestamp
+- High-High alarm indicator (red flashing when active)
+- Low-Low alarm indicator (yellow when active)
+- Acknowledge button for alarms
+- Return to main screen button

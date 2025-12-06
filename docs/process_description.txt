@@ -1,0 +1,9 @@
+PROCESS DESCRIPTION
+===================
+
+The system consists of two water tanks (Tank1 and Tank2) with level sensors and two pumps.
+Tank1 is the primary tank that receives water from Pump1. Tank2 receives water from Pump2.
+Each tank has analog level sensors providing 0-100% readings to the PLC.
+The PLC monitors levels and controls pumps based on setpoints: Tank1 operates between 30-80%, Tank2 between 25-75%.
+Pump2 has an interlock and will only run when Pump1 is already running to prevent system imbalance.
+Alarms trigger when Tank1 exceeds 95% (overflow risk) or drops below 10% (dry-run risk).

@@ -1,0 +1,52 @@
+LADDER LOGIC PSEUDOCODE - Multi-Tank Level Control
+===================================================
+
+INPUTS:
+- Tank1_Level (AI, 0-100%)
+- Tank2_Level (AI, 0-100%)
+- Mode_Switch (DI, 0=Manual, 1=Auto)
+- Manual_Pump1 (DI, pushbutton)
+- Manual_Pump2 (DI, pushbutton)
+- E_Stop (DI, normally closed)
+
+OUTPUTS:
+- Pump1_Run (DO)
+- Pump2_Run (DO)
+- Alarm_HH (DO, high-high alarm)
+- Alarm_LL (DO, low-low alarm)
+
+---
+
+NETWORK 1: Emergency Stop Interlock
+|--[ ]E_Stop---( )--Emergency_OK--|
+
+NETWORK 2: Tank1 High-High Alarm
+|--[Tank1_Level >= 95]--( )--Alarm_HH--|
+
+NETWORK 3: Tank1 Low-Low Alarm
+|--[Tank1_Level <= 10]--( )--Alarm_LL--|
+
+NETWORK 4: Auto Mode - Pump1 Control
+|--[ ]Mode_Switch--[Tank1_Level < 30]--[ ]Emergency_OK--( )--Pump1_Run--|
+|--[ ]Mode_Switch--[Tank1_Level > 80]--( / )--Pump1_Run--|
+
+NETWORK 5: Auto Mode - Pump2 Control
+|--[ ]Mode_Switch--[Tank2_Level < 25]--[ ]Emergency_OK--[ ]Pump1_Run--( )--Pump2_Run--|
+|--[ ]Mode_Switch--[Tank2_Level > 75]--( / )--Pump2_Run--|
+
+NETWORK 6: Manual Mode - Pump1
+|--[/]Mode_Switch--[ ]Manual_Pump1--[ ]Emergency_OK--( )--Pump1_Run--|
+
+NETWORK 7: Manual Mode - Pump2
+|--[/]Mode_Switch--[ ]Manual_Pump2--[ ]Emergency_OK--[ ]Pump1_Run--( )--Pump2_Run--|
+
+NETWORK 8: Pump Interlock (Pump2 only runs if Pump1 is running)
+|--[/]Pump1_Run--( / )--Pump2_Run--|
+
+---
+
+NOTES:
+- [ ] = normally open contact
+- [/] = normally closed contact
+- ( ) = output coil
+- ( / ) = reset coil

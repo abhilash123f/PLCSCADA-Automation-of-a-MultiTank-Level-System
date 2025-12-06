@@ -1,0 +1,18 @@
+PUMP SEQUENCING LOGIC
+=====================
+
+AUTO MODE:
+1. When Tank1 drops below 30%, Pump1 starts filling Tank1
+2. Pump1 stops when Tank1 reaches 80%
+3. Pump2 can only start if Pump1 is already running (interlock)
+4. When Tank2 drops below 25%, Pump2 starts filling Tank2
+5. Pump2 stops when Tank2 reaches 75%
+
+MANUAL MODE:
+- Operator can start Pump1 using pushbutton
+- Operator can start Pump2 only if Pump1 is running
+- Emergency stop overrides all operations
+
+ALARMS:
+- High-High: Tank1 >= 95% (overflow risk)
+- Low-Low: Tank1 <= 10% (pump damage risk)
