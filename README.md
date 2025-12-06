@@ -1,6 +1,6 @@
 # Multi-Tank Level Control System
 
-A simple PLC-SCADA project for automated level control of two tanks using Siemens TIA Portal and WinCC.
+A simple PLC-SCADA project for automated level control of two tanks designed for Siemens TIA Portal and WinCC.
 
 ## Project Overview
 This system monitors and controls water levels in two tanks using two pumps. The PLC handles pump sequencing, alarm management, and supports both manual and automatic operation modes.
@@ -23,8 +23,6 @@ This system monitors and controls water levels in two tanks using two pumps. The
 - Two pumps with motor starters
 - WinCC HMI for visualization
 
-## Optional Simulation
+## Simulation
 A small Python script (`simulate_tank_levels.py`) is included to simulate how Tank1 and Tank2 behave using the same auto-mode sequencing logic defined in `ladder_logic.txt`. This is only for visualization and does not replace an actual PLC program. Run it with `python simulate_tank_levels.py` to see tank levels, pump states, and alarms over time.
 
-## Author
-Student project for PLC programming course
